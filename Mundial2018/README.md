@@ -1,4 +1,4 @@
-#ENUNCIADO MUNDIAL 2018
+# ENUNCIADO MUNDIAL 2018
 
 A partir del fichero JSON mundial2018.json obtener la siguiente información:
 
