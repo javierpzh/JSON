@@ -2,7 +2,7 @@
 
 A partir del fichero JSON mundial2018.json obtener la siguiente información:
 
-* Listar información: Listar las selecciones, los goles y la duración de todos los partidos.
+* Listar información: Listar las selecciones, el resultado y la duración de todos los partidos.
 * Contar información: Mostrar los partidos y el número de goleadores que tiene cada uno.
 * Buscar o filtrar información: Mostrar todos los partidos de la selección dada.
 * Buscar información relacionada: Mostrar los partidos que han terminado con un resultado dado, y la lista de sus goleadores.
