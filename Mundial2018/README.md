@@ -2,7 +2,7 @@
 
 A partir del fichero JSON mundial2018.json obtener la siguiente información:
 
-* Listar información: Listar las selecciones que han disputado este mundial.
+* Listar información: Listar de todos los partidos, las selecciones que han jugado como locales y como visitantes este mundial.
 * Contar información: Mostrar los partidos y el número de goleadores que tiene cada uno.
 * Buscar o filtrar información: Mostrar todos los partidos de la selección dada.
 * Buscar información relacionada: Mostrar los partidos que han terminado con un resultado dado, y la lista de sus goleadores.
