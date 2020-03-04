@@ -16,3 +16,24 @@ def contar_informacion(datos):
         for seleccion in rondas["matches"]:
             lista_selecciones.append(seleccion["team1"]["name"])
     return len(lista_selecciones)
+
+def buscar_informacion(datos,cadena):
+    lista_partidos_locales=[]
+    lista_partidos_visitantes=[]
+    lista_partidos=[]
+    lista=[]
+    for rondas in datos["rounds"]:
+        for seleccion in rondas["matches"]:
+            local=(seleccion["team1"]["name"])
+            visitante=(seleccion["team2"]["name"])
+            lista_partidos.append(local)
+            lista_partidos.append(visitante)
+            lista_partidos_locales.append(local)
+            lista_partidos_visitantes.append(visitante)
+            if cadena==seleccion["team1"]["name"]:
+                visitante=(seleccion["team2"]["name"])
+                lista.append(visitante)
+            elif cadena==seleccion["team2"]["name"]:
+                local=(seleccion["team1"]["name"])
+                lista.append(local)
+    return lista
