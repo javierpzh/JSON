@@ -71,4 +71,4 @@ def ejercicio_libre(datos,cadena):
                 lista_goles=[]
                 lista_goles.append(gollocal)
                 lista_goles.append(golvisitante)
-    return lista_fecha,lista_partido,lista_goles_descanso,lista_goles
+    return "Fecha",lista_fecha,"Partido",lista_partido,"Descanso",lista_goles_descanso,"Resultado final",lista_goles,""
