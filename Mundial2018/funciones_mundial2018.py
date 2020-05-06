@@ -1,74 +1,91 @@
-import json
-
+#EJERCICIO 1
 def listar_informacion(datos):
     lista_selecciones=[]
     for rondas in datos["rounds"]:
-        for seleccion in rondas["matches"]:
-            lista_selecciones.append(seleccion["team1"]["name"])
+        for elem in rondas["matches"]:
+            lista_selecciones.append(elem["team1"]["name"])
     return lista_selecciones
 
+#EJERCICIO 2
 def contar_informacion(datos):
     lista_selecciones=[]
     for rondas in datos["rounds"]:
-        for seleccion in rondas["matches"]:
-            lista_selecciones.append(seleccion["team1"]["name"])
+        for elem in rondas["matches"]:
+            lista_selecciones.append(elem["team1"]["name"])
     return len(lista_selecciones)
 
-def buscar_informacion(datos,cadena):
+#EJERCICIO 3
+def buscar_informacion(datos,seleccion):
     lista_partidos_locales=[]
     lista_partidos_visitantes=[]
     lista_partidos=[]
     lista=[]
     for rondas in datos["rounds"]:
-        for seleccion in rondas["matches"]:
-            local=(seleccion["team1"]["name"])
-            visitante=(seleccion["team2"]["name"])
+        for elem in rondas["matches"]:
+            local=(elem["team1"]["name"])
+            visitante=(elem["team2"]["name"])
             lista_partidos.append(local)
             lista_partidos.append(visitante)
             lista_partidos_locales.append(local)
             lista_partidos_visitantes.append(visitante)
-            if cadena==seleccion["team1"]["name"]:
-                visitante=(seleccion["team2"]["name"])
+            if seleccion==elem["team1"]["name"]:
+                visitante=(elem["team2"]["name"])
                 lista.append(visitante)
-            elif cadena==seleccion["team2"]["name"]:
-                local=(seleccion["team1"]["name"])
+            elif seleccion==elem["team2"]["name"]:
+                local=(elem["team1"]["name"])
                 lista.append(local)
     return lista
 
-def buscar_informacion_relacionada(datos,cadena,cadena2):
-    lista1=[]
-    lista2=[]
+#EJERCICIO 4
+def buscar_informacion_relacionada(datos,gol1,gol2):
+    lista_locales=[]
+    lista_visitantes=[]
     for rondas in datos["rounds"]:
-        for seleccion in rondas["matches"]:
-            if cadena==seleccion["score1"] and cadena2==seleccion["score2"]:
-                local=(seleccion["team1"]["name"])
-                visitante=(seleccion["team2"]["name"])
-                lista1.append(local)
-                lista2.append(visitante)
-    return lista1,lista2
+        for elem in rondas["matches"]:
+            if gol1==elem["score1"] and gol2==elem["score2"]:
+                local=(elem["team1"]["name"])
+                visitante=(elem["team2"]["name"])
+                lista_locales.append(local)
+                lista_visitantes.append(visitante)
+    return lista_locales,lista_visitantes
 
-def ejercicio_libre(datos,cadena):
+#EJERCICIO 5
+def ejercicio_libre(datos,seleccion):
     for rondas in datos["rounds"]:
-        for seleccion in rondas["matches"]:
-            if cadena in seleccion["team1"]["name"] or cadena in seleccion["team2"]["name"]:
+        for elem in rondas["matches"]:
+            if seleccion in elem["team1"]["name"] or seleccion in elem["team2"]["name"]:
                 lista_fecha=[]
-                fecha=(seleccion["date"])
-                hora=(seleccion["time"])
+                fecha=(elem["date"])
+                hora=(elem["time"])
                 lista_fecha.append(fecha)
                 lista_fecha.append(hora)
-                local=(seleccion["team1"]["name"])
-                visitante=(seleccion["team2"]["name"])
+                local=(elem["team1"]["name"])
+                visitante=(elem["team2"]["name"])
                 lista_partido=[]
                 lista_partido.append(local)
                 lista_partido.append(visitante)
                 lista_goles_descanso=[]
-                descansolocal=(seleccion["score1i"])
-                descansovisitante=(seleccion["score2i"])
+                descansolocal=(elem["score1i"])
+                descansovisitante=(elem["score2i"])
                 lista_goles_descanso.append(descansolocal)
                 lista_goles_descanso.append(descansovisitante)
-                gollocal=(seleccion["score1"])
-                golvisitante=(seleccion["score2"])
+                gollocal=(elem["score1"])
+                golvisitante=(elem["score2"])
                 lista_goles=[]
                 lista_goles.append(gollocal)
                 lista_goles.append(golvisitante)
-    return "Fecha",lista_fecha,"Partido",lista_partido,"Descanso",lista_goles_descanso,"Resultado final",lista_goles,""
+    return lista_fecha,lista_partido,lista_goles_descanso,lista_goles
+
+
+#VALIDACIONES
+
+def validar_selecciones(datos,seleccion):
+    lista_partidos=[]
+    for rondas in datos["rounds"]:
+        for elem in rondas["matches"]:
+            local=(elem["team1"]["name"])
+            visitante=(elem["team2"]["name"])
+            lista_partidos.append(local)
+            lista_partidos.append(visitante)
+    if seleccion in lista_partidos:
+        return True
